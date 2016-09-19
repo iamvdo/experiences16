@@ -26,6 +26,7 @@ body {
 
 .reveal .slides > section {
   height: 100%;
+  height: calc(100% - 30px);
   padding: 0; }
 
 .reveal .slides > section > section {
@@ -89,6 +90,11 @@ body {
 .iamvdo.reveal p {
   text-align: left; }
 
+.iamvdo.reveal strong,
+.iamvdo.reveal b {
+  color: #111;
+  font-weight: bolder; }
+
 .iamvdo.reveal ul {
   display: block;
   margin: 30px 1.5em; }
@@ -101,7 +107,7 @@ body {
   font-size: .8em; }
 
 .iamvdo.reveal ul ul {
-  list-style: disc; }
+  list-style: none; }
 
 .iamvdo.reveal small {
   line-height: normal;
@@ -123,6 +129,10 @@ body {
 
 .iamvdo.reveal pre.small {
   height: 110px;
+  overflow: visible; }
+
+.iamvdo.reveal pre.medium {
+  height: 210px;
   overflow: visible; }
 
 .iamvdo.reveal pre.syntax {
@@ -175,6 +185,24 @@ body {
   max-height: 400px;
   height: 400px; }
 
+.iamvdo.reveal pre.medium code {
+  max-height: 200px;
+  height: 200px;
+  white-space: pre-wrap; }
+
+.iamvdo.reveal pre.medium:hover {
+  z-index: 10;
+  -webkit-transition: z-index 0s 0s;
+  transition: z-index 0s 0s; }
+
+.iamvdo.reveal pre.medium:first-of-type:hover {
+  z-index: 20; }
+
+.iamvdo.reveal pre.medium:hover code,
+.iamvdo.reveal pre.medium code:focus {
+  max-height: 400px;
+  height: 400px; }
+
 .iamvdo.reveal table {
   width: 100%;
   margin: 1em 0;
@@ -186,6 +214,10 @@ body {
   text-align: center;
   width: 50%; }
 
+.iamvdo.reveal table th:first-child,
+.iamvdo.reveal table td:first-child {
+  width: 200px; }
+
 .iamvdo.reveal table th {
   font-size: 2.6rem;
   letter-spacing: -.05em;
@@ -194,6 +226,11 @@ body {
 .iamvdo.reveal table td {
   font-size: 1.8rem;
   background: rgba(0, 0, 0, 0.5); }
+
+.iamvdo.reveal iframe {
+  /* width: 100%; */
+  margin: auto;
+  /* background: rgba(255,255,255,.2); */ }
 
 /*********************************************
  * LINKS
@@ -292,17 +329,42 @@ body {
 .iamvdo.reveal .Point--plus {
   background: yellowgreen; }
 
+.iamvdo.reveal .Conseil {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #2980b9;
+  color: #fff;
+  padding: 1em;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  border: 5px dashed white;
+  transform: rotate(0deg) scale(0.2);
+  opacity: 0;
+  transition: transform .3s; }
+
+.iamvdo.reveal .Conseil.visible {
+  opacity: 1;
+  transform: rotate(-5deg); }
+
+.iamvdo.reveal .Conseil p {
+  text-align: center; }
+
 /*********************************************
  * ATOMIC UTILS
  *********************************************/
 .iamvdo.reveal .u-aligncenter {
   text-align: center; }
 
+.iamvdo.reveal .u-alignleft {
+  text-align: left; }
+
 .iamvdo.reveal .u-alignmiddle {
-  position: absolute;
-  top: 30%;
-  left: 0;
-  right: 0; }
+  justify-content: center; }
 
 .iamvdo.reveal .u-code {
   background: transparent; }
@@ -336,10 +398,27 @@ body {
   vertical-align: middle;
   margin: 0 5px; }
 
+.iamvdo.reveal .u-fullwidth {
+  width: 100%; }
+
+.iamvdo.reveal .u-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.9); }
+
 /*********************************************
  * TRANSITIONS
  *********************************************/
 .iamvdo.reveal .slides > section {
+  display: flex !important;
+  flex-direction: column;
   -webkit-transition: -webkit-transform .6s, opacity .6s, background .6s;
   transition: transform .6s, opacity .6s, background .6s; }
 
@@ -386,6 +465,9 @@ body {
 
 .part h1 {
   color: #FFF; }
+
+.iamvdo.reveal .Part {
+  justify-content: center; }
 
 .iamvdo.reveal .Showcase-text {
   color: #eee; }
@@ -560,7 +642,7 @@ body {
   color: white;
   font-family: Atipo Bold, sans-serif;
   font-weight: normal;
-  line-height: 0.9em;
+  line-height: 1em;
   letter-spacing: normal;
   text-transform: none;
   text-shadow: none;

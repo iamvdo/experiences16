@@ -1,0 +1,7 @@
+.flexbox-ftw.slide-background {
+  background: url(../img/flexbox-ftw.png) center / contain no-repeat,
+              url(../img/flexbox-ftw-flou.png) center / cover;
+}
+.reveal p.ciu_embed {
+  text-align: center;
+}

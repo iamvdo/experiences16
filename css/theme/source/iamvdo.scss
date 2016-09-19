@@ -48,6 +48,7 @@ body {
 
 .reveal .slides > section {
   height: 100%;
+  height: calc(100% - 30px);
   padding: 0;
 }
 
@@ -62,7 +63,7 @@ body {
 $headingMargin: 0 0 20px 0;
 $headingColor: white;
 $headingFont: Atipo Bold, sans-serif;
-$headingLineHeight: 0.9em;
+$headingLineHeight: 1em;
 $headingTextTransform: none;
 $headingTextShadow: none;
 
@@ -127,6 +128,11 @@ $heading4Size: 1em;
   p {
     text-align: left;
   }
+  strong,
+  b {
+    color: #111;
+    font-weight: bolder;
+  }
   ul{
     display: block;
     margin: 30px 1.5em;
@@ -139,7 +145,7 @@ $heading4Size: 1em;
     font-size: .8em;
   }
   ul ul {
-      list-style: disc;
+      list-style: none;
   }
   small {
     line-height: normal;
@@ -161,6 +167,10 @@ $heading4Size: 1em;
   }
   pre.small {
     height: 110px;
+    overflow: visible;
+  }
+  pre.medium {
+    height: 210px;
     overflow: visible;
   }
   pre.syntax {
@@ -213,6 +223,24 @@ $heading4Size: 1em;
     max-height: 400px;
     height: 400px;
   }
+  pre.medium code {
+    max-height: 200px;
+    height: 200px;
+    white-space: pre-wrap;
+  }
+  pre.medium:hover {
+    z-index: 10;
+    -webkit-transition: z-index 0s 0s;
+            transition: z-index 0s 0s;
+  }
+  pre.medium:first-of-type:hover {
+    z-index: 20;
+  }
+  pre.medium:hover code,
+  pre.medium code:focus {
+    max-height: 400px;
+    height: 400px;
+  }
   table {
     width: 100%;
     margin: 1em 0;
@@ -224,6 +252,10 @@ $heading4Size: 1em;
     text-align: center;
     width: 50%;
   }
+  table th:first-child,
+  table td:first-child {
+    width: 200px;
+  }
   table th {
     font-size: 2.6rem;
     letter-spacing: -.05em;
@@ -232,6 +264,11 @@ $heading4Size: 1em;
   table td {
     font-size: 1.8rem;
     background: rgba(0,0,0,.5);
+  }
+  iframe {
+    /* width: 100%; */
+    margin: auto;
+    /* background: rgba(255,255,255,.2); */
   }
 
 }
@@ -336,6 +373,28 @@ $heading4Size: 1em;
   .Point--plus {
     background: yellowgreen;
   }
+  .Conseil {
+    position: fixed; z-index: 1;
+    left: 0; right: 0; bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #2980b9;
+    color: #fff;
+    padding: 1em;
+    box-shadow: 0 3px 5px rgba(0,0,0,.5);
+    border: 5px dashed white;
+    transform: rotate(0deg) scale(.2);
+    opacity: 0;
+    transition: transform .3s;
+  }
+  .Conseil.visible {
+    opacity: 1;
+    transform: rotate(-5deg);
+  }
+  .Conseil p {
+    text-align: center;
+  }
 
 }
 
@@ -349,9 +408,11 @@ $heading4Size: 1em;
   .u-aligncenter {
     text-align: center;
   }
+  .u-alignleft {
+    text-align: left;
+  }
   .u-alignmiddle {
-    position: absolute;
-    top: 30%; left: 0; right: 0;
+    justify-content: center;
   }
   .u-code {
     background: transparent;
@@ -388,6 +449,21 @@ $heading4Size: 1em;
     vertical-align: middle;
     margin: 0 5px;
   }
+  .u-fullwidth {
+    width: 100%
+  }
+  .u-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,.9);
+  }
 
 }
 
@@ -399,6 +475,8 @@ $heading4Size: 1em;
 .iamvdo.reveal {
 
   .slides>section {
+    display: flex !important;
+    flex-direction: column;
     -webkit-transition: -webkit-transform .6s, opacity .6s, background .6s;
             transition: transform .6s, opacity .6s, background .6s;
   }
@@ -459,6 +537,9 @@ $heading4Size: 1em;
 }
 .iamvdo.reveal {
 
+  .Part {
+    justify-content: center;
+  }
   .Showcase-text {
     color: #eee;
   }

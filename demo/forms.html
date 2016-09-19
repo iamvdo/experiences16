@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+html {
+  font:  1em sans-serif;
+  background: white;
+}
+body {
+  margin: 0 1em;
+}
+.InputAddOn {
+  display: flex;
+  margin: 1em 0;
+}
+
+.InputAddOn-field {
+  flex: 1;
+  /* field styles */
+}
+
+.InputAddOn-item {
+  background-color: hsla(31,15%,50%,.1);
+  color: #666;
+  font: inherit;
+  font-weight: 400;
+  max-width: 100px;
+  flex:  1 0 auto;
+}
+
+.InputAddOn-item:first-child {
+  border-radius: 2px 0 0 2px;
+}
+.InputAddOn-item:last-child {
+  border-radius: 0 2px 2px 0;
+}
+.InputAddOn-field, .InputAddOn-item {
+  border: 1px solid hsla(31,15%,50%,.25);
+  padding: .5em .75em;
+}
+.InputAddOn-submit {
+  background: #333;
+  color: #fff;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="InputAddOn">
+    <label class="InputAddOn-item" for="_1">First name</label>
+    <input class="InputAddOn-field" id="_1" placeholder="Vincent">
+  </div>
+  <div class="InputAddOn">
+    <label class="InputAddOn-item" for="_2">Last name</label>
+    <input class="InputAddOn-field" id="_2" placeholder="De Oliveira">
+  </div>
+  <div class="InputAddOn">
+    <label class="InputAddOn-item" for="_3">Email</label>
+    <input class="InputAddOn-field" id="_3" placeholder="vincent@iamvdo.me">
+    <button class="InputAddOn-item InputAddOn-submit">Send</button>
+  </div>
+</body>
+</html>

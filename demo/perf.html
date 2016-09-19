@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+html {
+  background: #fff;
+  font:  1em sans-serif;
+}
+body {
+  display: flex;
+}
+.container {
+  flex:  1;
+  position: relative;
+}
+.bad,
+.good {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background: #111;
+  color:  #fff;
+  left: 0;
+  top: 0;
+  margin-top: 80px;
+  transition: all 500ms;
+}
+.bad p,
+.good p {
+  margin: 0;
+}
+.active .bad {
+  left: 80px;
+  top: 80px;
+}
+.good {
+  /*will-change: transform;*/
+  transform-origin: 0 0;
+}
+.active .good {
+  transform: translate(80px, 80px);
+}
+body {
+  overflow: hidden;
+}
+.bad:nth-child(1),
+.good:nth-child(1) {
+  transition-delay: 100ms;
+}
+.bad:nth-child(2),
+.good:nth-child(2) {
+  transition-delay: 200ms;
+}
+.bad:nth-child(3),
+.good:nth-child(3) {
+  transition-delay: 300ms;
+}
+.bad:nth-child(4),
+.good:nth-child(4) {
+  transition-delay: 400ms;
+}
+.bad:nth-child(5),
+.good:nth-child(5) {
+  transition-delay: 500ms;
+}
+.bad:nth-child(6),
+.good:nth-child(6) {
+  transition-delay: 600ms;
+}
+.bad:nth-child(7),
+.good:nth-child(7) {
+  transition-delay: 700ms;
+}
+.bad:nth-child(8),
+.good:nth-child(8) {
+  transition-delay: 800ms;
+}
+.bad:nth-child(9),
+.good:nth-child(9) {
+  transition-delay: 900ms;
+}
+.bad:nth-child(10),
+.good:nth-child(10) {
+  transition-delay: 1000ms;
+}
+.bad:nth-child(11),
+.good:nth-child(11) {
+  transition-delay: 1100ms;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1><code>top</code>/<code>left</code></h1>
+    <div class="bad"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="bad"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="bad"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="bad"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="bad"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="bad"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="bad"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="bad"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="bad"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="bad"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+  </div>
+  <div class="container">
+    <h1><code>transform</code></h1>
+    <div class="good"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="good"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="good"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="good"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="good"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="good"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="good"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="good"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="good"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+    <div class="good"><p>p1</p><p>p2</p><p>p3</p><p>p4</p><p>p5</p></div>
+  </div>
+  <script id="jsbin-javascript">
+  var cs = [...document.querySelectorAll('.container')];
+  cs.map(c => {
+    c.addEventListener('click', e => {
+      c.classList.toggle('active')
+    })
+  })
+  </script>
+</body>
+</html>

@@ -4,14 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>{{TITLE}}</title>
+    <title>CSS, c’est pas de la science-fiction !</title>
 
-    <meta name="description" content="{{DESCRIPTION}}">
+    <meta name="description" content="Microsoft experiences 2016. Slides de la présentation.">
 
     <link rel="icon" href="http://iamvdo.me/images/favicon.png"/>
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/iamvdo.css">
+    <link rel="stylesheet" href="css/iamvdo-experiences.css">
 
     <!-- Printing and PDF exports -->
     <script>
@@ -27,15 +28,15 @@
       <div class="slides">
 
         <section>
-          <h1>{{TITLE}}</h1>
-          <h2>{{SUBTITLE}}</h2>
+          <h1>CSS, c’est pas de la science-fiction !</h1>
+          <h2><small>Microsoft</small> experiences'16</h2>
           <p class="u-aligncenter u-small u-margin">
             Vincent De Oliveira &middot; <a href="http://twitter.com/iamvdo">@iamvdo</a>
           </p>
         </section>
 
         <section class="me">
-          <h2>Hello, c'est <a href="http://twitter.com/iamvdo">@iamvdo</a></h2>
+          <h2>Hello, c’est <a href="http://twitter.com/iamvdo">@iamvdo</a></h2>
           <ul class="vcard">
             <li>Vincent De Oliveira</li>
             <li>Formateur web <a href="http://www.ensg.eu" title="Ecole Nationale des Sciences Géographiques">ENSG Géomatique</a></li>
@@ -48,22 +49,922 @@
           </ul>
         </section>
 
+        <section class="Showcase">
+          <img src="img/browsers1.png" alt="" class="u-no u-margin-auto">
+          <img src="img/browsers2.png" alt="" class="u-no u-margin-auto fragment">
+          <img src="img/browsers3.png" alt="" class="u-no u-margin-auto fragment">
+          <img src="img/browsers4.png" alt="" class="u-no u-margin-auto fragment">
+        </section>
+
         <section class="Jumbo">
-          <p class="Jumbo-title">{{TITLE}}</p>
+          <p class="Jumbo-title">Amélioration progressive</p>
           <div class="fragment">
-            <p class="Jumbo-text">{{TEXT}}</p>
-            <p class="Jumbo-text">{{TEXT}}</p>
+            <p class="Jumbo-text">Progressive enhancement</p>
           </div>
+        </section>
+
+        <section>
+          <h2>Compatibilité minimale</h2>
+          <ul>
+            <li>Se mettre dans la pire situation</li>
+            <li>Penser à la majorité des cas</li>
+            <li>Device utilisé, rendu navigateur, support CSS/JS, accessibilité, rapidité réseau, etc.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Enrichi ensuite</h2>
+          <ul>
+            <li>Effets visuels avancés</li>
+            <li>Savoir utiliser JS pour du meilleur CSS</li>
+            <li>Chargement asynchrone (images, contenus, etc.), stratégie offline, cache</li>
+            <li>etc.</li>
+          </ul>
+        </section>
+
+        <section class="Jumbo">
+          <p class="Jumbo-title">Quelles solutions ?</p>
+          <p class="Jumbo-text">Back to basics</p>
+        </section>
+
+        <section>
+          <h2>CSS</h2>
+          <ul>
+            <li>Ne rien faire / fallback</li>
+          </ul>
+<pre><code>.el {
+  /* ne rien faire */
+  box-shadow: 0 0 5px black
+}
+.el {
+  /* fallback */
+  color: #555;
+  color: rgba(0, 0, 0, .2)
+}</code></pre>
+        </section>
+        <section>
+          <h2>CSS</h2>
+          <ul>
+            <li>La règle <code>@supports</code></li>
+            <li>Feature Queries</li>
+          </ul>
+<pre><code>@supports not (box-shadow: none) {
+  .el {
+    border: 2px solid black
+  }
+}</code></pre>
+<pre><code>@supports (display: flex) { … }
+@supports not (transform-style: preserve-3d) { … }</code></pre>
+          <div class="Conseil fragment">
+            <p>CSS can do this!</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>JavaScript</h2>
+          <ul>
+            <li>Feature detection aussi</li>
+            <li>Ne pas se fier au User-agent</li>
+          </ul>
+<pre class="language-javascript"><code>// Vanilla JS
+if (CSS.supports('box-shadow', 'none')) { … }</code></pre>
+        </section>
+
+        <section>
+          <h2>JavaScript</h2>
+          <ul>
+            <li><a href="https://modernizr.com/">Modernizr</a></li>
+            <li class="fragment">Pas uniquement CSS : API JS, SVG, WebGL, etc.</li>
+            <li class="fragment">Configurable</li>
+          </ul>
+          <img src="img/modernizr.png" alt="" class="fragment" style="position: absolute;top: 0;left: 0;right: 0;margin: auto;">
+<pre class="fragment"><code>/* CSS */
+.no-boxshadow .box { … }
+.boxshadow .box { … }</code></pre>
+<pre class="fragment language-javascript"><code>// JavaScript
+if (Modernizr.boxshadow) { … }</code></pre>
+        </section>
+
+        <section class="u-alignmiddle">
+          <h2><code>@supports</code>/<code>CSS.supports</code></h2>
+          <p class="ciu_embed" data-feature="css-featurequeries" data-periods="future_1,current,past_1,past_2,past_3"><a href="http://caniuse.com/#feat=css-featurequeries">Can I Use css-featurequeries?</a> Data on support for the css-featurequeries feature across the major browsers from caniuse.com.</p>
+        </section>
+
+        <section class="Part">
+          <h1>Layout CSS</h1>
+        </section>
+
+        <section class="Jumbo">
+          <p class="Jumbo-title">C’est compliqué !</p>
+          <div class="Conseil fragment">
+            <p>Mais ça c’était avant !</p>
+          </div>
+        </section>
+
+        <section class="flexbox-ftw"></section>
+
+        <section>
+          <h2>Flexbox FTW</h2>
+          <ul>
+            <li class="fragment">Affichage en bloc ou en ligne</li>
+            <li class="fragment">Flexibilité des boites</li>
+            <li class="fragment">Réorganisation des éléments</li>
+            <li class="fragment">Alignements verticaux et horizontaux</li>
+            <li class="fragment">Responsive design facilité</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Flexbox FTW</h2>
+<pre class="medium"><code class="liveCoding css" data-livecoding-id="demo-flexbox" contenteditable>.el {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: gray;
+}
+.item {
+  flex: 0 1 auto;
+  width: 100px;
+  height: 50px;
+}
+//
+.item:nth-child(2) {
+  order: 1;
+  background: deeppink;
+}</code></pre>
+        <div id="demo-flexbox">
+          <style>
+          #demo-flexbox .el {
+            background: gray;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            overflow: hidden;
+            resize:  both;
+          }
+          #demo-flexbox .item {
+            background: deepskyblue;
+          }
+          </style>
+          <div class="el">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+          </div>
+        </div>
+        </section>
+
+        <section>
+          <h2>Flexbox : sticky footer</h2>
+          <iframe src="demo/sticky-footer.html" frameborder="0" width="250" height="250" style="overflow: hidden;resize: vertical;"></iframe>
+        </section>
+
+        <section>
+          <h2>Flexbox : sticky footer</h2>
+<pre><code>.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.Site-content {
+  flex: 1;
+}</code></pre>
+          <p><code>vw</code>, <code>vh</code> : relatif au <i>viewport</i>, <code>%</code> : relatif au <i>containing block</i></p>
+        </section>
+
+        <section>
+          <h2>Flexbox : formulaires</h2>
+          <iframe src="demo/forms.html" frameborder="0" width="400" height="150" style="overflow: hidden;resize: horizontal;"></iframe>
+        </section>
+
+        <section>
+          <h2>Flexbox : formulaires</h2>
+<pre><code>.Field {
+  display: flex
+}
+.Field input {
+  flex: 1
+}
+.Field label {
+  width: 100px
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>Flexbox : centrage vertical</h2>
+          <iframe src="demo/centrage.html" frameborder="0" width="150" height="150" style="overflow: hidden;resize: both;"></iframe>
+        </section>
+
+        <section>
+          <h2>Flexbox : centrage vertical</h2>
+<pre><code>.Site {
+  display: flex
+}
+.Box {
+  margin: auto
+}</code></pre>
+<pre><code>.Site {
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+</code></pre>
+        </section>
+
+        <section class="u-alignmiddle">
+          <h2>Flexbox</h2>
+          <p class="ciu_embed" data-feature="flexbox" data-periods="future_1,current,past_1,past_2,past_3"><a href="http://caniuse.com/#feat=flexbox">Can I Use flexbox?</a> Data on support for the flexbox feature across the major browsers from caniuse.com.</p>
+          <p><a href="https://github.com/jonathantneal/flexibility">Flexibility</a> (Polyfill IE9-)</p>
+        </section>
+
+        <section class="Jumbo">
+          <p class="Jumbo-text">Mieux que Flexbox ?</p>
+          <p class="Jumbo-title fragment">Grid Layout</p>
+        </section>
+
+        <section>
+          <h2>Grid Layout</h2>
+          <ul>
+            <li class="fragment">Layout de colonnes/lignes (virtuelles)</li>
+            <li class="fragment">Positionnement «anarchique» des éléments</li>
+            <li class="fragment">Alignements verticaux et horizontaux</li>
+            <li class="fragment">Layout hyper simplifié</li>
+            <li class="fragment">Relancé par IE10 (pour Windows 8)</li>
+            <li class="fragment">Mais les specs ont changé</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Grid</h2>
+<pre class="medium"><code class="liveCoding css" data-livecoding-id="demo-grid" contenteditable>.el {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 50px 1fr 50px;
+}
+
+.item:nth-child(1) {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+.item:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+  background: deeppink;
+}
+.item:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+  background: greenyellow;
+}
+.item:nth-child(4) {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+}</code></pre>
+          <div id="demo-grid">
+            <style>
+            #demo-grid .el {
+              background: gray;
+              width: 300px;
+              height: 300px;
+              margin: auto;
+              overflow: hidden;
+              resize:  both;
+            }
+            #demo-grid .item {
+              background: deepskyblue;
+              text-align: left;
+              padding: 0 1em;
+            }
+            </style>
+            <div class="el">
+              <div class="item">1</div>
+              <div class="item">2</div>
+              <div class="item">3</div>
+              <div class="item">4</div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Grid: ASCII layout</h2>
+          <iframe src="demo/ascii-layout.html" frameborder="0" width="400" height="400" style="overflow: hidden;resize: both;"></iframe>
+          <p class="u-small">Idée de layout par <a href="https://twitter.com/wesbos/status/777955345146777600">Wes Bos</a></p>
+        </section>
+
+        <section>
+          <h2>Grid: ASCII layout</h2>
+<pre><code>.Site {
+  display: grid;
+  grid-template-columns: repeat(7);
+  grid-template-rows: repeat(7);
+  grid-template-areas:
+    ". a . . . . ."
+    "g a f f f f ."
+    "g a f f f f ."
+    "g d d e e e e"
+    "g d d b b c ."
+    "h d d b b c ."
+    ". d d . . c .";
+}
+.item1 { grid-area: a }
+.item2 { grid-area: b }
+.item3 { grid-area: c }
+.item4 { grid-area: d }
+.item5 { grid-area: e }
+.item6 { grid-area: f }
+.item7 { grid-area: g }
+.item8 { grid-area: h }
+</code></pre>
+        </section>
+
+        <section class="u-alignmiddle">
+          <h2>Grid</h2>
+          <p class="ciu_embed" data-feature="css-grid" data-periods="future_1,current,past_1,past_2,past_3"><a href="http://caniuse.com/#feat=css-grid">Can I Use css-grid?</a> Data on support for the css-grid feature across the major browsers from caniuse.com.</p>
+          <p>Firefox et Chrome/Opera : supporté par un flag</p>
+        </section>
+
+        <section class="Part">
+          <h1>Animations</h1>
+        </section>
+
+        <section>
+          <h2>Transitions / Animations</h2>
+          <ul>
+            <li><b>Transition :</b> Animer une propriété d'une valeur A à une valeur B</li>
+            <li><b>Animation :</b> Animer plusieurs états</li>
+          </ul>
+          <ul>
+            <li>Méthodes d’interpolation
+              <ul>
+                <li>Simples : <code>linear</code>, <code>ease</code>, <code>ease-in</code>, <code>ease-out</code>, <code>ease-in-out</code></li>
+                <li>Avancé : <code>cubic-bezier()</code></li>
+              </ul>
+            </li>
+          </ul>
+          <img src="img/trTimingFn.png" alt="">
+        </section>
+
+        <section>
+          <h2></h2>
+<pre class="medium"><code class="liveCoding css" data-livecoding-id="demo-animations" contenteditable>.transition {
+  transition: margin-left 2s;
+}
+.transition-parent:hover .transition {
+  margin-left: 150px;
+}
+.animation-parent:hover .animation {
+  animation: demo-anim 2s infinite alternate;
+}
+@keyframes demo-anim {
+  from {
+    margin-left: 0;
+    background: deeppink;
+  }
+  to {
+    margin-left: 150px;
+    background: deepskyblue;
+  }
+}</code></pre>
+          <div id="demo-animations">
+            <style>
+            #demo-animations .el {
+              background: #111;
+              width: 600px;
+              height: 300px;
+              margin: auto;
+              overflow: hidden;
+              resize: horizontal;
+            }
+            #demo-animations .el > div {
+              height: 150px;
+            }
+            #demo-animations .el > div > div {
+              width: 150px;
+              height: 150px;
+            }
+            #demo-animations .el .transition {
+              background: deepskyblue;
+            }
+            #demo-animations .el .animation {
+              background: deeppink;
+            }
+            @keyframes demo-anim {
+              from {
+                margin-left: 0;
+                background: deeppink;
+              }
+              to {
+                margin-left: 150px;
+                background: deepskyblue;
+              }
+            }
+            </style>
+            <div class="el">
+              <div class="transition-parent">
+                <div class="transition"></div>
+              </div>
+              <div class="animation-parent">
+                <div class="animation"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Dans la vraie vie</h2>
+          <ul>
+            <li>Les inconvénients :
+              <ul>
+                <li>Méthodes d’accélération limitées</li>
+                <li>Keyframes (animations) en % = synchro pas évidente</li>
+                <li>Déclenchements limités</li>
+              </ul>
+            </li>
+            <li>Ce que l’on voudrait :
+              <ul>
+                <li>Méthodes d’accélération complexes (rebonds, elastiques, etc.)</li>
+                <li>Synchronisation précise</li>
+                <li>Déclenchements avancés</li>
+              </ul>
+            </li>
+          </ul>
+          <div class="Conseil fragment">
+            <p>La solution : JavaScript !</p>
+          </div>
+        </section>
+
+        <section class="Jumbo">
+          <p class="Jumbo-text"><b>Objectif :</b> des animations JS aussi performantes que des animations CSS</p>
+          <p class="Jumbo-text fragment"><code>requestAnimationFrame</code></p>
+        </section>
+
+        <section>
+          <h2><code>requestAnimationFrame</code></h2>
+          <ul>
+            <li>Regroupe les animations en début de frame</li>
+            <li>Juste avant le rafraichissement de l’écran</li>
+            <li>Les animations inactives (autres onglets, masquées, etc.) sont stoppées</li>
+          </ul>
+<pre class="medium language-javascript"><code>function animate() {
+  // Animations !
+  requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);</code></pre>
+          <div class="Conseil fragment">
+            <p>La plupart des librairies d’animations JS utilisent <code>requestAnimationFrame</code></p>
+          </div>
+        </section>
+
+        <section>
+          <h2>So…</h2>
+          <ul>
+            <li>Standard : <a href="https://w3c.github.io/web-animations/">Web Animations API</a></li>
+            <li>Pour les cas simples :
+              <ul>
+                <li><a href="https://github.com/bendc/animateplus">Animateplus</a></li>
+                <li><a href="https://github.com/juliangarnier/anime">Anime.js</a></li>
+              </ul>
+            </li>
+            <li>Pour les cas complexes :
+              <ul>
+                <li><a href="https://greensock.com/">Greensock (GSAP)</a></li>
+              </ul>
+            </li>
+            <li>Outils design graphique :
+              <ul>
+                <li>Adobe After Effects, AnimateCC, <a href="https://medium.com/@fmuaddib/the-following-are-the-possible-ways-to-create-professional-animations-in-svg-9d4caca5f4ec#.huur5titk">etc.</a></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Web Animations API</h2>
+<pre class="medium language-javascript"><code>var elem = document.querySelector('div');
+elem.animate({
+    opacity: [0.5, 1],
+    transform: ['scale(0.5)', 'scale(1)'],
+}, {
+    direction: 'alternate',
+    duration: 500,
+    iterations: Infinity,
+});</code></pre>
+          <div id="demo-web-animations">
+            <style>
+            #demo-web-animations div {
+              display: flex;
+              margin: auto;
+              width: 150px;
+              height: 150px;
+              justify-content: center;
+              align-items: center;
+              background: #111;
+              color: #f03d36;
+            }
+            </style>
+            <div>Hello</div>
+          </div>
+        </section>
+
+        <section class="u-alignmiddle">
+          <h2>Web Animations API</h2>
+          <p class="ciu_embed" data-feature="web-animation" data-periods="future_1,current,past_1,past_2,past_3"><a href="http://caniuse.com/#feat=web-animation">Can I Use web-animation?</a> Data on support for the web-animation feature across the major browsers from caniuse.com.</p>
+          <p><a href="https://github.com/web-animations/web-animations-js">Polyfill</a></p>
+        </section>
+
+        <section>
+          <h2>Animateplus</h2>
+<pre class="medium language-javascript"><code>animate({
+  el: "div",
+  translateY: 100,
+  scale: 1.4,
+  duration: 500,
+  delay: 1000,
+  easing: "easeOutElastic",
+  loop: true,
+  direction: "alternate",
+  begin: () => {},
+  complete: () => {}
+});</code></pre>
+          <div id="demo-animateplus">
+            <style>
+            #demo-animateplus div {
+              display: flex;
+              margin: auto;
+              width: 150px;
+              height: 150px;
+              justify-content: center;
+              align-items: center;
+              background: #111;
+              color: #f03d36;
+            }
+            </style>
+            <div>Hello</div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Greensock (GSAP)</h2>
+          <iframe src="http://codepen.io/chrisgannon/full/KzrwLW" frameborder="0" height="500"  class="u-fullwidth"></iframe>
+        </section>
+
+        <section>
+          <h2>Mise en place propre</h2>
+          <ul>
+            <li>Pensez amélioration progressive !</li>
+            <li>Que se passe t’il si JS est désactivé ?</li>
+            <li>Ou si le chargement est asynchrone ? (voulu ou non)</li>
+            <li>Si pas d’animations, l’état initial et l’état final doivent être «OK»</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Mise en place raisonnée</h2>
+          <ul>
+            <li>Est-ce que l’animation est utile (nécessaire) ?</li>
+            <li>Apporte t’elle du sens à l’interface ?</li>
+            <li>Aide t’elle la compréhension de l’utilisateur ?</li>
+            <li>Ne pas surcharger inutilement</li>
+          </ul>
+          <div class="u-row u-overlay fragment">
+            <div style="margin-right:100px">
+              <img src="img/animation-good.gif" alt="">
+              <p class="u-aligncenter">Bon</p>
+            </div>
+            <div>
+              <img src="img/animation-bad.gif" alt="">
+              <p class="u-aligncenter">Moins bon</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="Part">
+          <h1>Transformations</h1>
+        </section>
+
+        <section>
+          <h2>Transformations</h2>
+          <ul>
+            <li>Transformation 2D
+              <ul>
+                <li>Rotation, translation, échelle, inclinaison, matrice</li>
+              </ul>
+            </li>
+            <li>Transformation 3D
+              <ul>
+                <li>Pareil mais en 3D</li>
+                <li>Notion de perspective</li>
+              </ul>
+            </li>
+          </ul>
+          <div class="Conseil fragment">
+            <p>Transformations + Animations = Full Power!</p>
+          </div>
+        </section>
+
+        <section>
+          <h2></h2>
+<pre><code class="liveCoding css" data-livecoding-id="demo-transform" contenteditable>.transform {
+  transform: rotate(0deg);
+  transition: transform 1s;
+}</code></pre>
+          <div id="demo-transform">
+            <style>
+            #demo-transform .transform {
+              background: #111;
+              width: 200px;
+              height: 200px;
+              margin: 50px auto;
+            }
+            </style>
+            <div class="transform">
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <iframe src="http://instax.com/mini90/fr/guide" frameborder="0" height="500" class="u-fullwidth"></iframe>
+        </section>
+
+        <section class="Jumbo">
+          <p class="Jumbo-title">C’est pas juste un gadget</p>
+          <div class="fragment">
+            <p class="Jumbo-text">Hardware Accelerated</p>
+            <p class="Jumbo-text">= bon pour les perfs d’affichage</p>
+          </div>
+          <div class="Conseil fragment">
+            <p>Transform everywhere!</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Objectif : 60 FPS</h2>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/pfiHFqnPLZ4?rel=0" frameborder="0"></iframe>
+        </section>
+
+        <section>
+          <h2>Layout - Paint - Composite</h2>
+          <ul>
+            <li>Fonctionnement d’un navigateur</li>
+            <li><b>Layout :</b> positionnement des elements (display, flexbox, table, grid, etc.)</li>
+            <li><b>Paint :</b> styles visuels (background, border, color, box-shadow, etc.)</li>
+            <li><b>Composite :</b> calque séparé, envoyé au GPU, traité (transform, filtres, opacité, etc.), puis appliqué au dessus de la page</li>
+            <li><a href="https://csstriggers.com/">CSSTriggers</a></li>
+          </ul>
+          <div class="Conseil fragment">
+            <p>COMPOSITE FTW!</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Utilisez <code>transform</code> <small>et <code>opacity</code></small></h2>
+          <ul>
+            <li><code>top</code>/<code>left</code>/<code>right</code>/<code>bottom</code>/<code>margin</code> = <code>translate()</code></li>
+            <li><code>width</code>/<code>height</code> = <code>scale()</code></li>
+            <li>Visibilité = <code>opacity</code></li>
+            <li><code>box-shadow</code> = <code>opacity</code></li>
+          </ul>
+          <ul>
+            <li>Besoin de créer de nouveaux éléments</li>
+          </ul>
+        </section>
+
+        <section>
+          <iframe src="http://design.iamvdo.me/morphing-hamburger-menu/" frameborder="0" height="600" class="u-fullwidth"></iframe>
+        </section>
+
+        <section>
+          <h2>Benchmarkez</h2>
+          <iframe src="demo/perf.html" frameborder="0" height="300" class="u-fullwidth"></iframe>
+          <div class="Conseil fragment">
+            <p>Et pas que votre super PC/Mac</p>
+            <p>Votre mobile aussi !</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>FLIP</h2>
+          <ul>
+            <li>Technique mise au point par <a href="https://twitter.com/aerotwist">@aerotwist</a></li>
+            <li>Utilisez les transformations CSS partout, et de manière optimale</li>
+            <li>Via JavaScript
+              <ul>
+                <li>Animations en JS : <code>requestAnimationFrame</code></li>
+                <li>Animations en CSS : <code>transition</code>/<code>animation</code></li>
+              </ul>
+            </li>
+          </ul>
+          <ul>
+            <li>FLIP
+              <ul>
+                <li><b>F</b>irst : récupérer état initial</li>
+                <li><b>L</b>ast : déplacer/récupérer état final (sans animation)</li>
+                <li><b>I</b>nvert : remettre en position initiale sans animation</li>
+                <li><b>P</b>lay : animer entre le départ et l’arrivée</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>FLIP</h2>
+          <iframe src="http://jsbin.com/viyuqa/edit?output" frameborder="0" height="600" class="u-fullwidth"></iframe>
+          <p><a href="https://github.com/googlechrome/flipjs">FlipJS</a></p>
+        </section>
+
+        <section class="Part">
+          <h1>Icones</h1>
+        </section>
+
+        <section>
+          <h2>Sprites</h2>
+          <ul>
+            <li>Technique héritée des jeux vidéos</li>
+            <li>C’est de l’amélioration progressive</li>
+          </ul>
+          <img src="img/sprite-sonic.png" alt="" class="fragment u-overlay">
+          <img src="img/sprite-twitter.png" alt="" class="fragment u-overlay">
+          <img src="img/sprite-google.png" alt="" class="fragment u-overlay">
+        </section>
+
+        <section class="Showcase">
+          <img class="Image Image--unstyled" src="img/retina.png" alt="" width="600">
+          <p class="Showcase-text Image-legend">Ecran faible densité vs. écran haute densité</p>
+          <div class="Conseil fragment">
+            <p>1px CSS != 1px écran</p>
+          </div>
+        </section>
+
+        <section class="Jumbo">
+          <p class="Jumbo-title">Icones vectorielles</p>
+        </section>
+
+        <section>
+          <h2>Icon-font</h2>
+          <ul>
+            <li class="fragment">Police de caractères</li>
+            <li class="fragment">Rendu possible grâce à <code>@font-face</code></li>
+          </ul>
+<pre class="fragment"><code class="css" contenteditable="" spellcheck="false">@font-face {
+  font-family: myIcons; src: url(myIcons.woff);
+}
+.element { font-family: myIcons; }
+</code></pre>
+          <div class="demo fragment">
+            <style>
+              .reveal .demo {
+                margin: 1em;
+              }
+              @font-face {
+                font-family: 'myIcons';
+                src: url('css/fonts/icon.woff') format('woff');
+              }
+              .reveal .demo-icon {
+                font-family: 'myIcons';
+                font-size: 1.4em;
+                text-rendering: optimizeLegibility;
+                margin: 1em;
+              }
+              .reveal .demo-icon--home:before {
+                content: "home";
+              }
+              .reveal .demo-icon--camera:before {
+                content: "camera";
+              }
+              .reveal .demo-icon--music:before {
+                content: "music";
+              }
+            </style>
+            <span class="demo-icon demo-icon--home"></span>
+            <span class="demo-icon demo-icon--camera"></span>
+            <span class="demo-icon demo-icon--music"></span>
+          </div>
+        </section>
+
+        <section>
+          <h2>SVG</h2>
+          <ul>
+            <li class="fragment">Format d'image <span class="fragment">vectoriel</span></li>
+            <li class="fragment">C'est du XML</li>
+          </ul>
+<pre class="fragment"><code class="language-markup" contenteditable="" spellcheck="false">&lt;svg viewBox="0 0 100 100">
+  &lt;circle cx="50" cy="50" r="50" fill="yellow" />
+  &lt;rect width="50" height="50" x="50" y="50" fill="blue" />
+&lt;/svg>
+</code></pre>
+          <div class="demo fragment">
+            <svg width="300" height="150" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="50" fill="yellow" />
+              <rect width="50" height="50" x="50" y="50" fill="blue" />
+            </svg>
+          </div>
+        </section>
+
+        <section class="Jumbo">
+          <p class="Jumbo-title">SVG everywhere!</p>
+        </section>
+
+        <section>
+          <h2>Icon-font vs. SVG</h2>
+          <table>
+            <tr>
+              <th></th>
+              <th>Icon-font</th>
+              <th>SVG</th>
+            </tr>
+            <tr class="Points fragment">
+              <td class="u-alignleft">Création</td>
+              <td class="Point"></td>
+              <td class="Point Point--plus"></td>
+            </tr>
+            <tr class="Points fragment">
+              <td class="u-alignleft">Intégration</td>
+              <td class="Point Point--plus"></td>
+              <td class="Point Point--plus"></td>
+            </tr>
+            <tr class="Points fragment">
+              <td class="u-alignleft">Support</td>
+              <td class="Point Point--plus"></td>
+              <td class="Point"></td>
+            </tr>
+            <tr class="Points fragment">
+              <td class="u-alignleft">Fallback</td>
+              <td class="Point"></td>
+              <td class="Point Point--plus"></td>
+            </tr>
+          </table>
+          <p><a href="http://slides.iamvdo.me/kiwiparty15/">Pour aller plus loin : icon-font vs. SVG</a></p>
+        </section>
+
+        <section>
+          <h2>Icon-font vs. SVG</h2>
+          <table>
+            <tr>
+              <th></th>
+              <th>Icon-font</th>
+              <th>SVG</th>
+            </tr>
+            <tr class="Points fragment">
+              <td class="u-alignleft">Contrôle en CSS</td>
+              <td class="Point"></td>
+              <td class="Point Point--plus"></td>
+            </tr>
+            <tr class="Points fragment">
+              <td class="u-alignleft">Positionnement</td>
+              <td class="Point"></td>
+              <td class="Point Point--plus"></td>
+            </tr>
+            <tr class="Points fragment">
+              <td class="u-alignleft">Interactions/animations</td>
+              <td class="Point"></td>
+              <td class="Point Point--plus"></td>
+            </tr>
+            <tr class="Points fragment">
+              <td class="u-alignleft">JavaScript</td>
+              <td class="Point"></td>
+              <td class="Point Point--plus"></td>
+            </tr>
+            <tr class="Points fragment">
+              <td class="u-alignleft">RWD</td>
+              <td class="Point"></td>
+              <td class="Point Point--plus"></td>
+            </tr>
+            <tr class="Points fragment">
+              <td class="u-alignleft">Accessibilité</td>
+              <td class="Point"></td>
+              <td class="Point Point--plus"></td>
+            </tr>
+          </table>
+          <p><a href="http://slides.iamvdo.me/kiwiparty15/">Pour aller plus loin : icon-font vs. SVG</a></p>
+        </section>
+
+        <section>
+          <h2>SVG</h2>
+          <iframe src="http://slides.iamvdo.me/kiwiparty16" frameborder="0" class="u-fullwidth" height="600"></iframe>
+          <p><a href="http://slides.iamvdo.me/kiwiparty16">http://slides.iamvdo.me/kiwiparty16</a></p>
+        </section>
+
+        <section class="Jumbo">
+          <p class="Jumbo-title fragment">Remettez en cause tout ce que je viens de vous montrer</p>
+          <p class="Jumbo-text fragment">Soyez critique. <span class="fragment">Toujours.</span><span class="fragment"> Tout le temps.</span></p>
+        </section>
+
+        <section class="me">
+          <h2>Merci, <span>questions?</span></h2>
+          <p class="u-aligncenter">Vincent De Oliveira &middot; <a href="http://twitter.com/iamvdo">@iamvdo</a></p>
+          <p class="u-aligncenter"><a href="http://slides.iamvdo.me/experiences16">slides.iamvdo.me/experiences16</a></p>
         </section>
 
       </div>
     </div>
-
     <div class="info-overlay" id="info-twitter">
       <a href="https://twitter.com/iamvdo">@iamvdo</a>
     </div>
     <div class="info-overlay" id="info-slides">
-      <a href="{{LINK}}">{{LINK}}</a>
+      <a href="http://slides.iamvdo.me/experiences16">http://slides.iamvdo.me/experiences16</a>
     </div>
 
     <script src="lib/js/head.min.js"></script>
@@ -82,7 +983,31 @@
           { src: 'plugin/prismjs/prism.js', async: true, callback: function () { Prism.highlightAll(); } },
           { src: 'plugin/prefixfree/prefixfree.js', async: true },
           { src: 'plugin/live-coding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }},
-          { src: 'plugin/nav/nav.js', async: true}
+          { src: 'plugin/nav/nav.js', async: true},
+          { src: 'http://cdn.jsdelivr.net/caniuse-embed/1.0.1/caniuse-embed.min.js'},
+          { src: 'lib/js/animateplus.js', callback: function () {
+            animate({
+              el: "#demo-animateplus div",
+              translateY: 100,
+              scale: 1.4,
+              duration: 500,
+              delay: 500,
+              easing: "easeOutElastic",
+              loop: true,
+              direction: "alternate"
+            });
+          }},
+          { src: 'lib/js/web-animations.js', callback: function () {
+            var elem = document.querySelector('#demo-web-animations div');
+            elem.animate({
+                opacity: [0.5, 1],
+                transform: ['scale(0.5)', 'scale(1)'],
+            }, {
+                direction: 'alternate',
+                duration: 500,
+                iterations: Infinity,
+            });
+          }}
         ]
       });
     </script>
