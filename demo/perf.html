@@ -26,7 +26,7 @@ body {
   left: 0;
   top: 0;
   margin-top: 80px;
-  transition: all 1500ms cubic-bezier(.3,2,.5,.7);
+  transition: all 1000ms cubic-bezier(.3,2,.5,.7);
 }
 .bad p,
 .good p {
@@ -36,6 +36,25 @@ body {
   left: 80px;
   top: 80px;
 }
+.active .bad p {
+  animation: moveit_bad .5s 2 alternate;
+}
+@keyframes moveit_bad {
+  from {
+    margin-left: 0;
+  }
+  to {
+    margin-left: 50px;
+  }
+}
+@keyframes moveit_good {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(50px);
+  }
+}
 .good {
   /*will-change: transform;*/
   transform-origin: 0 0;
@@ -43,52 +62,88 @@ body {
 .active .good {
   transform: translate(80px, 80px);
 }
+.active .good p {
+  animation: moveit_good .5s 2 alternate;
+}
 body {
   overflow: hidden;
 }
 .bad:nth-child(1),
-.good:nth-child(1) {
+.good:nth-child(1),
+.bad:nth-child(1) p,
+.good:nth-child(1) p {
   transition-delay: 100ms;
+  animation-delay:  100ms;
 }
 .bad:nth-child(2),
-.good:nth-child(2) {
+.good:nth-child(2),
+.bad:nth-child(2) p,
+.good:nth-child(2) p {
   transition-delay: 200ms;
+  animation-delay:  200ms;
 }
 .bad:nth-child(3),
-.good:nth-child(3) {
+.good:nth-child(3),
+.bad:nth-child(3) p,
+.good:nth-child(3) p {
   transition-delay: 300ms;
+  animation-delay:  300ms;
 }
 .bad:nth-child(4),
-.good:nth-child(4) {
+.good:nth-child(4),
+.bad:nth-child(4) p,
+.good:nth-child(4) p {
   transition-delay: 400ms;
+  animation-delay:  400ms;
 }
 .bad:nth-child(5),
-.good:nth-child(5) {
+.good:nth-child(5),
+.bad:nth-child(5) p,
+.good:nth-child(5) p {
   transition-delay: 500ms;
+  animation-delay:  500ms;
 }
 .bad:nth-child(6),
-.good:nth-child(6) {
+.good:nth-child(6),
+.bad:nth-child(6) p,
+.good:nth-child(6) p {
   transition-delay: 600ms;
+  animation-delay:  600ms;
 }
 .bad:nth-child(7),
-.good:nth-child(7) {
+.good:nth-child(7),
+.bad:nth-child(7) p,
+.good:nth-child(7) p {
   transition-delay: 700ms;
+  animation-delay:  700ms;
 }
 .bad:nth-child(8),
-.good:nth-child(8) {
+.good:nth-child(8),
+.bad:nth-child(8) p,
+.good:nth-child(8) p {
   transition-delay: 800ms;
+  animation-delay:  800ms;
 }
 .bad:nth-child(9),
-.good:nth-child(9) {
+.good:nth-child(9),
+.bad:nth-child(9) p,
+.good:nth-child(9) p {
   transition-delay: 900ms;
+  animation-delay:  900ms;
 }
 .bad:nth-child(10),
-.good:nth-child(10) {
+.good:nth-child(10),
+.bad:nth-child(10) p,
+.good:nth-child(10) p {
   transition-delay: 1000ms;
+  animation-delay:  1000ms;
 }
 .bad:nth-child(11),
-.good:nth-child(11) {
+.good:nth-child(11),
+.bad:nth-child(11) p,
+.good:nth-child(11) p {
   transition-delay: 1100ms;
+  animation-delay:  1100ms;
 }
 </style>
 </head>
