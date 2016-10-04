@@ -134,8 +134,8 @@ if (CSS.supports('box-shadow', 'none')) { … }</code></pre>
           <h2>JavaScript</h2>
           <ul>
             <li><a href="https://modernizr.com/">Modernizr</a></li>
-            <li class="fragment">Pas uniquement CSS : API JS, SVG, WebGL, etc.</li>
-            <li class="fragment">Configurable</li>
+            <li>Pas uniquement CSS : API JS, SVG, WebGL, etc.</li>
+            <li>Configurable</li>
           </ul>
           <img src="img/modernizr.png" alt="" class="fragment" style="position: absolute;top: 0;left: 0;right: 0;margin: auto;">
 <pre class="fragment"><code>/* CSS */
@@ -166,11 +166,11 @@ if (Modernizr.boxshadow) { … }</code></pre>
         <section>
           <h2>Flexbox FTW</h2>
           <ul>
-            <li class="fragment">Affichage en bloc ou en ligne</li>
-            <li class="fragment">Flexibilité des boites</li>
-            <li class="fragment">Réorganisation des éléments</li>
-            <li class="fragment">Alignements verticaux et horizontaux</li>
-            <li class="fragment">Responsive design facilité</li>
+            <li>Affichage en bloc ou en ligne</li>
+            <li>Flexibilité des boites</li>
+            <li>Réorganisation des éléments</li>
+            <li>Alignements verticaux et horizontaux</li>
+            <li>Responsive design facilité</li>
           </ul>
         </section>
 
@@ -288,12 +288,12 @@ if (Modernizr.boxshadow) { … }</code></pre>
         <section>
           <h2>Grid Layout</h2>
           <ul>
-            <li class="fragment">Layout de colonnes/lignes (virtuelles)</li>
-            <li class="fragment">Positionnement «anarchique» des éléments</li>
-            <li class="fragment">Alignements verticaux et horizontaux</li>
-            <li class="fragment">Layout hyper simplifié</li>
-            <li class="fragment">Relancé par IE10 (pour Windows 8)</li>
-            <li class="fragment">Mais les specs ont changé</li>
+            <li>Layout de colonnes/lignes (virtuelles)</li>
+            <li>Positionnement «anarchique» des éléments</li>
+            <li>Alignements verticaux et horizontaux</li>
+            <li>Layout hyper simplifié</li>
+            <li>Relancé par IE10 (pour Windows 8)</li>
+            <li>Mais les specs ont changé</li>
           </ul>
         </section>
 
@@ -396,9 +396,10 @@ if (Modernizr.boxshadow) { … }</code></pre>
         <section>
           <h2>Transitions / Animations</h2>
           <ul>
-            <li><b>Transition :</b> Animer une propriété d'une valeur A à une valeur B</li>
-            <li><b>Animation :</b> Animer plusieurs états</li>
+            <li class="fragment"><b>Transition :</b> Animer une propriété d'une valeur A à une valeur B</li>
+            <li class="fragment"><b>Animation :</b> Animer plusieurs états</li>
           </ul>
+          <div class="fragment">
           <ul>
             <li>Méthodes d’interpolation
               <ul>
@@ -408,6 +409,7 @@ if (Modernizr.boxshadow) { … }</code></pre>
             </li>
           </ul>
           <img src="img/trTimingFn.png" alt="">
+          </div>
         </section>
 
         <section>
@@ -479,14 +481,14 @@ if (Modernizr.boxshadow) { … }</code></pre>
         <section>
           <h2>Dans la vraie vie</h2>
           <ul>
-            <li>Les inconvénients :
+            <li class="fragment">Les inconvénients :
               <ul>
                 <li>Méthodes d’accélération limitées</li>
                 <li>Keyframes (animations) en % = synchro pas évidente</li>
                 <li>Déclenchements limités</li>
               </ul>
             </li>
-            <li>Ce que l’on voudrait :
+            <li class="fragment">Ce que l’on voudrait :
               <ul>
                 <li>Méthodes d’accélération complexes (rebonds, elastiques, etc.)</li>
                 <li>Synchronisation précise</li>
@@ -509,13 +511,15 @@ if (Modernizr.boxshadow) { … }</code></pre>
           <ul>
             <li>Regroupe les animations en début de frame</li>
             <li>Juste avant le rafraichissement de l’écran</li>
-            <li>Les animations inactives (autres onglets, masquées, etc.) sont stoppées</li>
           </ul>
 <pre class="medium language-javascript"><code>function animate() {
   // Animations !
   requestAnimationFrame(animate);
 }
 requestAnimationFrame(animate);</code></pre>
+          <ul class="fragment">
+            <li>Les animations inactives (autres onglets, masquées, etc.) sont stoppées</li>
+          </ul>
           <div class="Conseil fragment">
             <p>La plupart des librairies d’animations JS utilisent <code>requestAnimationFrame</code></p>
           </div>
@@ -524,19 +528,19 @@ requestAnimationFrame(animate);</code></pre>
         <section>
           <h2>So…</h2>
           <ul>
-            <li>Standard : <a href="https://w3c.github.io/web-animations/">Web Animations API</a></li>
-            <li>Pour les cas simples :
+            <li class="fragment">Standard : <a href="https://w3c.github.io/web-animations/">Web Animations API</a></li>
+            <li class="fragment">Pour les cas simples :
               <ul>
                 <li><a href="https://github.com/bendc/animateplus">Animateplus</a></li>
                 <li><a href="https://github.com/juliangarnier/anime">Anime.js</a></li>
               </ul>
             </li>
-            <li>Pour les cas complexes :
+            <li class="fragment">Pour les cas complexes :
               <ul>
                 <li><a href="https://greensock.com/">Greensock (GSAP)</a></li>
               </ul>
             </li>
-            <li>Outils design graphique :
+            <li class="fragment">Outils design graphique :
               <ul>
                 <li>Adobe After Effects, AnimateCC, <a href="https://medium.com/@fmuaddib/the-following-are-the-possible-ways-to-create-professional-animations-in-svg-9d4caca5f4ec#.huur5titk">etc.</a></li>
               </ul>
@@ -618,19 +622,19 @@ elem.animate({
           <h2>Mise en place propre</h2>
           <ul>
             <li>Pensez amélioration progressive !</li>
-            <li>Que se passe t’il si JS est désactivé ?</li>
-            <li>Ou si le chargement est asynchrone ? (voulu ou non)</li>
-            <li>Si pas d’animations, l’état initial et l’état final doivent être «OK»</li>
+            <li class="fragment">Que se passe t’il si JS est désactivé ?</li>
+            <li class="fragment">Ou si en cours de chargement/éxécution ?</li>
+            <li class="fragment">Si pas d’animations, l’état initial et l’état final doivent être «OK»</li>
           </ul>
         </section>
 
         <section>
           <h2>Mise en place raisonnée</h2>
           <ul>
-            <li>Est-ce que l’animation est utile (nécessaire) ?</li>
-            <li>Apporte t’elle du sens à l’interface ?</li>
-            <li>Aide t’elle la compréhension de l’utilisateur ?</li>
-            <li>Ne pas surcharger inutilement</li>
+            <li class="fragment">Est-ce que l’animation est utile (nécessaire) ?</li>
+            <li class="fragment">Apporte t’elle du sens à l’interface ?</li>
+            <li class="fragment">Aide t’elle la compréhension de l’utilisateur ?</li>
+            <li class="fragment">Ne pas surcharger inutilement</li>
           </ul>
           <div class="u-row u-overlay fragment">
             <div style="margin-right:100px">
@@ -651,14 +655,14 @@ elem.animate({
         <section>
           <h2>Transformations</h2>
           <ul>
-            <li>Transformation 2D
+            <li class="fragment">Transformation 2D
               <ul>
                 <li>Rotation, translation, échelle, inclinaison, matrice</li>
               </ul>
             </li>
-            <li>Transformation 3D
+            <li class="fragment">Transformation 3D
               <ul>
-                <li>Pareil mais en 3D</li>
+                <li>Idem mais fonctions 3D</li>
                 <li>Notion de perspective</li>
               </ul>
             </li>
@@ -711,11 +715,10 @@ elem.animate({
         <section>
           <h2>Layout - Paint - Composite</h2>
           <ul>
-            <li>Fonctionnement d’un navigateur</li>
-            <li><b>Layout :</b> positionnement des elements (display, flexbox, table, grid, etc.)</li>
-            <li><b>Paint :</b> styles visuels (background, border, color, box-shadow, etc.)</li>
-            <li><b>Composite :</b> calque séparé, envoyé au GPU, traité (transform, filtres, opacité, etc.), puis appliqué au dessus de la page</li>
-            <li><a href="https://csstriggers.com/">CSSTriggers</a></li>
+            <li class="fragment"><b>Layout (reflow) :</b> positionnement des éléments (display, flexbox, table, grid, etc.)</li>
+            <li class="fragment"><b>Paint (repaint):</b> styles visuels (background, border, color, box-shadow, etc.)</li>
+            <li class="fragment"><b>Composite :</b> calque séparé, envoyé au GPU, traité (transform, filtres, opacité, etc.), puis appliqué au dessus de la page</li>
+            <li class="fragment"><a href="https://csstriggers.com/">CSSTriggers</a></li>
           </ul>
           <div class="Conseil fragment">
             <p>COMPOSITE FTW!</p>
@@ -725,13 +728,27 @@ elem.animate({
         <section>
           <h2>Utilisez <code>transform</code> <small>et <code>opacity</code></small></h2>
           <ul>
-            <li><code>top</code>/<code>left</code>/<code>right</code>/<code>bottom</code>/<code>margin</code> = <code>translate()</code></li>
-            <li><code>width</code>/<code>height</code> = <code>scale()</code></li>
-            <li>Visibilité = <code>opacity</code></li>
-            <li><code>box-shadow</code> = <code>opacity</code>/<code>transform</code></li>
-          </ul>
-          <ul>
-            <li>Besoin de créer de nouveaux éléments</li>
+            <li class="fragment"><code>top</code>/<code>left</code>/<code>right</code>/<code>bottom</code>/<code>margin</code>
+              <ul class="fragment">
+                <li>= <code>translate()</code></li>
+              </ul>
+            </li>
+            <li class="fragment"><code>width</code>/<code>height</code>
+              <ul class="fragment">
+                <li>= <code>scale()</code></li>
+              </ul>
+            </li>
+            <li class="fragment"><code>display</code>/visibilité
+              <ul class="fragment">
+                <li> = <code>opacity</code></li>
+              </ul>
+            </li>
+            <li class="fragment"><code>box-shadow</code>
+              <ul class="fragment">
+                <li>= <code>opacity</code>/<code>transform</code></li>
+              </ul>
+            </li>
+            <li class="fragment">etc.</li>
           </ul>
         </section>
 
@@ -764,13 +781,13 @@ elem.animate({
               </ul>
             </li>
           </ul>
-          <ul>
+          <ul class="fragment">
             <li>FLIP
               <ul>
-                <li><b>F</b>irst : récupérer état initial</li>
-                <li><b>L</b>ast : déplacer/récupérer état final (sans animation)</li>
-                <li><b>I</b>nvert : remettre en position initiale sans animation</li>
-                <li><b>P</b>lay : animer entre le départ et l’arrivée</li>
+                <li class="fragment"><b>F</b>irst : récupérer état initial</li>
+                <li class="fragment"><b>L</b>ast : déplacer/récupérer état final (sans animation)</li>
+                <li class="fragment"><b>I</b>nvert : remettre en position initiale sans animation</li>
+                <li class="fragment"><b>P</b>lay : animer entre le départ et l’arrivée</li>
               </ul>
             </li>
           </ul>
@@ -845,22 +862,18 @@ elem.animate({
           <ul>
             <li class="fragment">Format d'image <span class="fragment">vectoriel</span></li>
             <li class="fragment">C'est du XML</li>
+            <li class="fragment">Utilisable en format image, ou intégré dans le HTML</li>
           </ul>
-<pre class="fragment"><code class="language-markup" contenteditable="" spellcheck="false">&lt;svg viewBox="0 0 100 100">
+<pre class="fragment small"><code class="language-markup" contenteditable="" spellcheck="false">&lt;svg viewBox="0 0 100 100">
   &lt;circle cx="50" cy="50" r="50" fill="yellow" />
   &lt;rect width="50" height="50" x="50" y="50" fill="blue" />
-&lt;/svg>
-</code></pre>
+&lt;/svg></code></pre>
           <div class="demo fragment">
             <svg width="300" height="150" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="50" fill="yellow" />
               <rect width="50" height="50" x="50" y="50" fill="blue" />
             </svg>
           </div>
-        </section>
-
-        <section class="Jumbo">
-          <p class="Jumbo-title">SVG everywhere!</p>
         </section>
 
         <section>
@@ -922,12 +935,7 @@ elem.animate({
               <th>SVG</th>
             </tr>
             <tr class="Points fragment">
-              <td class="u-alignleft">Contrôle en CSS</td>
-              <td class="Point"></td>
-              <td class="Point Point--plus"></td>
-            </tr>
-            <tr class="Points fragment">
-              <td class="u-alignleft">Positionnement</td>
+              <td class="u-alignleft">CSS, Positionnement</td>
               <td class="Point"></td>
               <td class="Point Point--plus"></td>
             </tr>
@@ -953,6 +961,10 @@ elem.animate({
             </tr>
           </table>
           <p><a href="http://slides.iamvdo.me/kiwiparty15/">Pour aller plus loin : icon-font vs. SVG</a></p>
+        </section>
+
+        <section class="Jumbo">
+          <p class="Jumbo-title">SVG everywhere!</p>
         </section>
 
         <section>
