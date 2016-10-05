@@ -81,8 +81,8 @@
           <h2>Enrichi ensuite</h2>
           <ul>
             <li>Effets visuels avancés</li>
-            <li>Savoir utiliser JS pour du meilleur CSS</li>
-            <li>Chargement asynchrone (images, contenus, etc.), stratégie offline, cache</li>
+            <li>Chargement asynchrone (JS, images, contenus, etc.)</li>
+            <li>Stratégie offline, cache</li>
             <li>etc.</li>
           </ul>
         </section>
@@ -95,16 +95,16 @@
         <section>
           <h2>CSS</h2>
           <ul>
-            <li>Ne rien faire / fallback</li>
+            <li>Ne rien faire / fallback CSS</li>
           </ul>
 <pre><code>.el {
   /* ne rien faire */
-  box-shadow: 0 0 5px black
+  backdrop-filter: blur(5px)
 }
 .el {
   /* fallback */
-  color: #555;
-  color: rgba(0, 0, 0, .2)
+  display: flex;
+  display: hologram;
 }</code></pre>
         </section>
         <section>
@@ -113,13 +113,14 @@
             <li>La règle <code>@supports</code></li>
             <li>Feature Queries</li>
           </ul>
-<pre><code>@supports not (box-shadow: none) {
+<pre><code>@supports (backdrop-filter: blur(5px)) {
   .el {
-    border: 2px solid black
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, .5);
   }
-}</code></pre>
-<pre><code>@supports (display: flex) { … }
-@supports not (transform-style: preserve-3d) { … }</code></pre>
+}
+@supports (clip-path: circle()) { … }
+@supports not (display: hologram) { … }</code></pre>
           <div class="Conseil fragment">
             <p>CSS can do this!</p>
           </div>
@@ -132,7 +133,7 @@
             <li>Ne pas se fier au User-agent</li>
           </ul>
 <pre class="language-javascript"><code>// Vanilla JS
-if (CSS.supports('box-shadow', 'none')) { … }</code></pre>
+if (CSS.supports('backdrop-filter', 'blur(5px)')) { … }</code></pre>
         </section>
 
         <section>
@@ -144,10 +145,10 @@ if (CSS.supports('box-shadow', 'none')) { … }</code></pre>
           </ul>
           <img src="img/modernizr.png" alt="" class="fragment" style="position: absolute;top: 0;left: 0;right: 0;margin: auto;">
 <pre class="fragment"><code>/* CSS */
-.no-boxshadow .box { … }
-.boxshadow .box { … }</code></pre>
+.no-geolocation .box { … }
+.geolocation .box { … }</code></pre>
 <pre class="fragment language-javascript"><code>// JavaScript
-if (Modernizr.boxshadow) { … }</code></pre>
+if (Modernizr.geolocation) { … }</code></pre>
         </section>
 
         <section class="u-alignmiddle">
@@ -354,13 +355,13 @@ if (Modernizr.boxshadow) { … }</code></pre>
         </section>
 
         <section>
-          <h2>Grid: ASCII layout</h2>
+          <h2>Grid: «ASCII» layout</h2>
           <iframe src="demo/ascii-layout.html" frameborder="0" width="400" height="400" style="overflow: hidden;resize: both;"></iframe>
           <p class="u-small">Idée de layout par <a href="https://twitter.com/wesbos/status/777955345146777600">Wes Bos</a></p>
         </section>
 
         <section>
-          <h2>Grid: ASCII layout</h2>
+          <h2>Grid: «ASCII» layout</h2>
 <pre><code>.Site {
   display: grid;
   grid-template-columns: repeat(7);
@@ -429,11 +430,11 @@ if (Modernizr.boxshadow) { … }</code></pre>
   animation: demo-anim 2s infinite alternate;
 }
 @keyframes demo-anim {
-  from {
+  0% {
     margin-left: 0;
     background: deeppink;
   }
-  to {
+  100% {
     margin-left: 150px;
     background: deepskyblue;
   }
@@ -628,7 +629,7 @@ elem.animate({
           <ul>
             <li>Pensez amélioration progressive !</li>
             <li class="fragment">Que se passe t’il si JS est désactivé ?</li>
-            <li class="fragment">Ou si en cours de chargement/éxécution ?</li>
+            <li class="fragment">Ou si en cours de chargement/exécution ?</li>
             <li class="fragment">Si pas d’animations, l’état initial et l’état final doivent être «OK»</li>
           </ul>
         </section>
@@ -707,9 +708,6 @@ elem.animate({
             <p class="Jumbo-text">Hardware Accelerated</p>
             <p class="Jumbo-text">= bon pour les perfs d’affichage</p>
           </div>
-          <div class="Conseil fragment">
-            <p>Transform everywhere!</p>
-          </div>
         </section>
 
         <section>
@@ -720,18 +718,18 @@ elem.animate({
         <section>
           <h2>Layout - Paint - Composite</h2>
           <ul>
-            <li class="fragment"><b>Layout (reflow) :</b> positionnement des éléments (display, flexbox, table, grid, etc.)</li>
+            <li class="fragment"><b>Layout (reflow) :</b> positionnement des éléments (display, flexbox, table, grid, margin, etc.)</li>
             <li class="fragment"><b>Paint (repaint):</b> styles visuels (background, border, color, box-shadow, etc.)</li>
-            <li class="fragment"><b>Composite :</b> calque séparé, envoyé au GPU, traité (transform, filtres, opacité, etc.), puis appliqué au dessus de la page</li>
-            <li class="fragment"><a href="https://csstriggers.com/">CSSTriggers</a></li>
+            <li class="fragment"><b>Composite :</b> calque séparé, envoyé au GPU, traité, puis réappliqué dans la page</li>
           </ul>
           <div class="Conseil fragment">
             <p>COMPOSITE FTW!</p>
+            <p><a href="https://csstriggers.com/">CSSTriggers.com</a></p>
           </div>
         </section>
 
         <section>
-          <h2>Utilisez <code>transform</code> <small>et <code>opacity</code></small></h2>
+          <h2>Composite = <code>transform</code>, <code>opacity</code></h2>
           <ul>
             <li class="fragment"><code>top</code>/<code>left</code>/<code>right</code>/<code>bottom</code>/<code>margin</code>
               <ul class="fragment">
@@ -902,7 +900,7 @@ elem.animate({
             <tr class="Points fragment">
               <td class="u-alignleft">Support</td>
               <td class="Point Point--plus"></td>
-              <td class="Point"></td>
+              <td class="Point Point--plus"></td>
             </tr>
             <tr class="Points fragment">
               <td class="u-alignleft">Fallback</td>
